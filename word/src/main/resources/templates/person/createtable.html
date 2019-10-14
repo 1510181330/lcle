@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>查课信息填写</title>
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="js/Word/createtable.js" type="text/javascript"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="~{commons/bars::topbar(active='createtable')}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{commons/bars::leftbar(active='createtable')}"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div id="init">
+                <div class="alert alert-info" role="alert">首先你要选择班级的数量，和查课人（限定两人♪(^∇^*)），制表人（本次操作者）</div>
+                <h4>1.班级数量</h4>
+                <div class="dropdown">
+                    <select class="form-control" style="width: 200px" id="select1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <br><br>
+                <div>
+                    <h4>2.查课人</h4>
+                    <div class="form-group" style="float: left">
+                        <label for="name1" style="font-size: 20px">查课人1</label>
+                        <input type="text" class="form-control" id="name1" placeholder="请输入名称" style="width: 200px">
+                    </div>
+                    <div class="form-group" style="float: left; margin-left: 40px">
+                        <label for="name2" style="font-size: 20px">查课人2</label>
+                        <input type="text" class="form-control" id="name2" placeholder="请输入名称" style="width: 200px">
+                    </div>
+                </div>
+                <br><br>
+                <div style="position: absolute; left: 25px; top: 360px">
+                    <h4>3.制表人</h4>
+                    <div class="form-group">
+                        <label for="name3" style="font-size: 20px">制表人</label>
+                        <input type="text" class="form-control" id="name3" placeholder="请输入名称" style="width: 200px">
+                    </div>
+                </div>
+                <br><br>
+                <div style="position: absolute; left: 25px; top: 580px">
+                    <button type="button" id="submit" class="btn btn-default" style="background: #005cbf; color: #c8cbcf">确认</button>
+                </div>
+            </div>
+
+            <div id="create">
+                <div class="alert alert-info" role="alert">使用下拉框和输入框，对班级信息进行调整，点击按钮提交信息</div>
+                <div class="dropdown" id="div1">
+                    <h4>1.选中年级</h4>
+                    <select class="form-control" style="width: 200px" id="select2">
+                    </select>
+                </div>
+                <br><br>
+                <div id="div2">
+                    <h4>2.选择班级</h4>
+                    <div>
+                        <div class="form-group" style="width: 200px; float: left;" id="classSelect1div">
+                            <label for="classSelect1" style="font-size: 20px">班级1</label>
+                            <select class="form-control" id="classSelect1"></select>
+                        </div>
+                        <div class="form-group" style="width: 200px; float: left; margin-left: 35px" id="classSelect2div">
+                            <label for="classSelect2" style="font-size: 20px">班级2</label>
+                            <select class="form-control" id="classSelect2"></select>
+                        </div>
+                        <div class="form-group" style="width: 200px; float: left; margin-left: 35px" id="classSelect3div">
+                            <label for="classSelect3" style="font-size: 20px">班级3</label>
+                            <select class="form-control" id="classSelect3"></select>
+                        </div>
+                        <div class="form-group" style="width: 200px; float: left; margin-left: 35px" id="classSelect4div">
+                            <label for="classSelect4" style="font-size: 20px">班级4</label>
+                            <select class="form-control" id="classSelect4"></select>
+                        </div>
+                        <div class="form-group" style="width: 200px; float: left; margin-left: 35px" id="classSelect5div">
+                            <label for="classSelect5" style="font-size: 20px">班级5</label>
+                            <select class="form-control" id="classSelect5"></select>
+                        </div>
+                        <div id="submit1div" class="form-group" style="width: 70px; float: left; margin-left: 30px">
+                            <label for="submit1" style="font-size: 20px"></label>
+                            <br><br>
+                            <button type="button" id="submit1" class="btn btn-default" style="background: #005cbf; color: #c8cbcf">确认</button>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div id= "div3"style="position: absolute; left: 25px; top: 360px">
+                    <h4>3.选择课节</h4>
+                    <div>
+                        <div class="form-group" style="width: 200px; float: left" id="weekSelect1div">
+                            <label for="weekSelect1" style="font-size: 20px">周几</label>
+                            <select class="form-control" id="weekSelect1">
+                                <option>一</option>
+                                <option>二</option>
+                                <option>三</option>
+                                <option>四</option>
+                                <option>五</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="width: 200px; float: left; margin-left: 40px" id="weekSelect2div">
+                            <label for="weekSelect2" style="font-size: 20px">第几大节</label>
+                            <select class="form-control" id="weekSelect2">
+                                <option>一</option>
+                                <option>二</option>
+                                <option>三</option>
+                                <option>四</option>
+                                <option>五</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div id="div4" style="position: absolute; left: 25px; top: 520px">
+                    <h4>4.键入任课教师姓名与课程</h4>
+                    <div class="form-group" style="float: left">
+                        <label for="teacher" style="font-size: 20px">教师姓名</label>
+                        <input type="text" class="form-control" id="teacher" placeholder="请输入教师姓名" style="width: 200px">
+                    </div>
+                    <div class="form-group" style="float: left; margin-left: 40px">
+                        <label for="lession" style="font-size: 20px">课程名称</label>
+                        <input type="text" class="form-control" id="lession" placeholder="请输入课程名称" style="width: 200px">
+                    </div>
+                </div>
+                <div id="error1" style="position: absolute; left: 25px; top: 640px;" class="alert alert-danger">此两项不能为空，请做出适当的修改</div>
+                <div id="div5" style="position: absolute; left: 25px; top: 700px">
+                    <h4>5.请选中缺课人数</h4>
+                    <div>
+                        <div class="form-group" style="width: 200px; float: left;" id="absenceNumber1div">
+                            <label for="absenceNumber1" style="font-size: 20px">班级1</label>
+                            <select class="form-control" id="absenceNumber1"></select>
+                        </div>
+                        <div class="form-group" style="width: 200px; float: left; margin-left: 40px" id="absenceNumber2div">
+                            <label for="absenceNumber2" style="font-size: 20px">班级2</label>
+                            <select class="form-control" id="absenceNumber2"></select>
+                        </div>
+                        <div class="form-group" style="width: 200px; float: left; margin-left: 40px" id="absenceNumber3div">
+                            <label for="absenceNumber3" style="font-size: 20px">班级3</label>
+                            <select class="form-control" id="absenceNumber3"></select>
+                        </div>
+                        <div class="form-group" style="width: 200px; float: left; margin-left: 40px" id="absenceNumber4div">
+                            <label for="absenceNumber4" style="font-size: 20px">班级4</label>
+                            <select class="form-control" id="absenceNumber4"></select>
+                        </div>
+                        <div class="form-group" style="width: 200px; float: left; margin-left: 40px" id="absenceNumber5div">
+                            <label for="absenceNumber5" style="font-size: 20px">班级5</label>
+                            <select class="form-control" id="absenceNumber5"></select>
+                        </div>
+                    </div>
+                </div>
+                <div id="div6" style="position: absolute; left: 25px; top: 850px">
+                    <h4>6.输入缺课人姓名</h4>
+                    <div id="absenperson1div" class="form-group" style="float: left">
+                        <label for="absenperson1" style="font-size: 20px">班级1</label>
+                        <input type="text" class="form-control" id="absenperson1" placeholder="格式：张三丰+令狐冲" style="width: 200px">
+                    </div>
+                    <div id="absenperson2div" class="form-group" style="float: left; margin-left: 40px">
+                        <label for="absenperson2" style="font-size: 20px">班级2</label>
+                        <input type="text" class="form-control" id="absenperson2" placeholder="格式：张三丰+令狐冲" style="width: 200px">
+                    </div>
+                    <div id="absenperson3div" class="form-group" style="float: left; margin-left: 40px">
+                        <label for="absenperson3" style="font-size: 20px">班级3</label>
+                        <input type="text" class="form-control" id="absenperson3" placeholder="格式：张三丰+令狐冲" style="width: 200px">
+                    </div>
+                    <div id="absenperson4div" class="form-group" style="float: left; margin-left: 40px">
+                        <label for="absenperson4" style="font-size: 20px">班级4</label>
+                        <input type="text" class="form-control" id="absenperson4" placeholder="格式：张三丰+令狐冲" style="width: 200px">
+                    </div>
+                    <div id="absenperson5div"class="form-group" style="float: left; margin-left: 40px">
+                        <label for="absenperson5" style="font-size: 20px">班级5</label>
+                        <input type="text" class="form-control" id="absenperson5" placeholder="格式：张三丰+令狐冲" style="width: 200px">
+                    </div>
+                </div>
+                <div id="error2" style="position: absolute; left: 25px; top: 970px;" class="alert alert-danger">迟到人数为0,人员信息应填写无</div>
+                <div id="error3" style="position: absolute; left: 25px; top: 970px;" class="alert alert-danger">未使用合法分隔符分隔姓名，或者选择人数与姓名个数不匹配</div>
+                <div id="error4" style="position: absolute; left: 25px; top: 970px;" class="alert alert-danger">此项不能为空，如果没有请假人员，请填无</div>
+                <div id="div7" style="position: absolute; left: 25px; top: 1020px">
+                    <h4>7.输入请假人人姓名</h4>
+                    <div id="leaveperson1div" class="form-group" style="float: left">
+                        <label for="leaveperson1" style="font-size: 20px">班级1</label>
+                        <input type="text" class="form-control" id="leaveperson1" placeholder="格式：张三丰+令狐冲" style="width: 200px">
+                </div>
+                    <div id="leaveperson2div" class="form-group" style="float: left; margin-left: 40px">
+                        <label for="leaveperson2" style="font-size: 20px">班级2</label>
+                        <input type="text" class="form-control" id="leaveperson2" placeholder="格式：张三丰+令狐冲" style="width: 200px">
+                    </div>
+                    <div id="leaveperson3div" class="form-group" style="float: left; margin-left: 40px">
+                        <label for="leaveperson3" style="font-size: 20px">班级3</label>
+                        <input type="text" class="form-control" id="leaveperson3" placeholder="格式：张三丰+令狐冲" style="width: 200px">
+                    </div>
+                    <div id="leaveperson4div" class="form-group" style="float: left; margin-left: 40px">
+                        <label for="leaveperson4" style="font-size: 20px">班级4</label>
+                        <input type="text" class="form-control" id="leaveperson4" placeholder="格式：张三丰+令狐冲" style="width: 200px">
+                    </div>
+                    <div id="leaveperson5div"class="form-group" style="float: left; margin-left: 40px">
+                        <label for="leaveperson5" style="font-size: 20px">班级5</label>
+                        <input type="text" class="form-control" id="leaveperson5" placeholder="格式：张三丰+令狐冲" style="width: 200px">
+                    </div>
+                </div>
+                <div id="error5" style="position: absolute; left: 25px; top: 1140px;" class="alert alert-danger">此两项不能为空，如果没有请假人员，请填无</div>
+                <div id="div8" style="position: absolute; left: 25px; top: 1220px">
+                    <button type="button" id="submit2" class="btn btn-default" style="background: #005cbf; color: #c8cbcf">确认</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="js/jquery-3.4.1.min.js" ></script>
+<script type="text/javascript" src="js/popper.min.js" ></script>
+<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+
+</body>
+
+</html>

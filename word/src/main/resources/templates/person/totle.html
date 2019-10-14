@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>文件生成</title>
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="js/Word/Totle.js" type="text/javascript"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/dashboard.css" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+
+        .modal-dialog {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .modal-content {
+            /*模态框滚动条的样式，不加的话，按钮会被挤掉 */
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .modal-body {
+            overflow-y: scroll;
+            position: absolute;
+            top: 55px;
+            bottom: 65px;
+            width: 100%;
+        }
+
+        .modal-header .close {margin-right: 15px;}
+
+        .modal-footer {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div th:replace="~{commons/bars::topbar(active='totle')}"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="~{commons/bars::leftbar(active='totle')}"></div>
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                    <button class="btn btn-default" style="background: #005cbf; color: #c8cbcf" id="start">汇总文件制作</button>
+                    <div id="week">
+                        <div class="alert alert-info" role="alert">使用下拉框选中所查周次</div>
+                        <div class="dropdown" id="div1">
+                            <h4>周次</h4>
+                            <select class="form-control" style="width: 200px" id="select2">
+                                <option>第一周</option>
+                                <option>第二周</option>
+                                <option>第三周</option>
+                                <option>第四周</option>
+                                <option>第五周</option>
+                                <option>第六周</option>
+                                <option>第七周</option>
+                                <option>第八周</option>
+                                <option>第九周</option>
+                                <option>第十周</option>
+                                <option>第十一周</option>
+                                <option>第十二周</option>
+                                <option>第十三周</option>
+                                <option>第十四周</option>
+                                <option>第十五周</option>
+                                <option>第十六周</option>
+                                <option>第十七周</option>
+                                <option>第十八周</option>
+                                <option>第十九周</option>
+                                <option>第二十周</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-default" style="background: #005cbf; color: #c8cbcf; margin-top: 80px" id="pushbutton1">开始制作</button>
+                    </div>
+                </main>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js" ></script>
+    <script type="text/javascript" src="js/popper.min.js" ></script>
+    <script type="text/javascript" src="js/bootstrap.min.js" ></script>
+</body>
+</html>

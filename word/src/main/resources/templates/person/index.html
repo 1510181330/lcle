@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>主页</title>
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link href="css/signin.css" rel="stylesheet">
+	</head>
+
+	<body class="text-center">
+		<div style="width:100%; height:100%; position:relative">
+			<form class="form-signin" th:action="@{/userlogin}" th:method="POST">
+				<img class="mb-4" src="img/bootstrap-solid.svg" alt="" width="72" height="72">
+				<h1 class="h3 mb-3 font-weight-normal" th:text="请登录">请登录</h1>
+				<label class="sr-only" th:text="用户">用户</label>
+				<input th:type="text" th:name="username" class="form-control" th:placeholder="用户名" required="" autofocus="">
+				<label class="sr-only" th:text="密码">密码</label>
+				<input th:type="password" th:name="password" class="form-control" th:placeholder="密码" required="">
+				<button class="btn btn-lg btn-primary btn-block" th:type="submit" th:text="登录">登录</button>
+				<p style="color: red" th:text="${session.msg}" th:if="${not #strings.isEmpty(session.msg)}"></p>
+				<p class="mt-5 mb-3 text-muted">© 限于不粘锅的一点小礼物</p>
+			</form>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>关于系统</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{commons/bars::topbar(active='content')}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{commons/bars::leftbar(active='content')}"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <ul>
+                <li><div class="alert alert-success" role="alert" style="font-size: 25px">LCLE系统1.0制作上线的目的在于，制作一个自动制作值班表的东西，简化某些同学的负担</div></li>
+                <li><div class="alert alert-success" role="alert" style="font-size: 25px">正如预期，作者限于不粘锅成功了，系统实现了预期功能，SpringMvc技术堪当大用，内部设计较为合理</div></li>
+                <li><div class="alert alert-success" role="alert" style="font-size: 25px">然而，搞事清恰恰是限于不粘锅喜欢做的，于是LCLE2.0计划，被正式启动</div></li>
+                <li><div class="alert alert-success" role="alert" style="font-size: 25px">这次，我们KO我们自己</div></li>
+                <li><div class="alert alert-success" role="alert" style="font-size: 25px">本次升级，加入了新的模块，查课文件在线制作和汇总文件生成（基于Poi-tl）</div></li>
+                <li><div class="alert alert-success" role="alert" style="font-size: 25px">相信SpringBoot会让我们有全新的体验</div></li>
+                <li><div class="alert alert-success" role="alert" style="font-size: 25px">限于不粘锅祝你使用愉快，各遇良人，早日暴富</div></li>
+                <li><div class="alert alert-success" role="alert" style="font-size: 25px">如有技术问题或者疑问，请联系上帝，或者作者，作者QQ:1510181330, 作者电话:13663751068</div></li>
+            </ul>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<!-- Icons -->
+<script type="text/javascript" src="js/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Graphs -->
+<script type="text/javascript" src="/js/Chart.min.js"></script>
+<script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            datasets: [{
+                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+                lineTension: 0,
+                backgroundColor: 'transparent',
+                borderColor: '#007bff',
+                borderWidth: 4,
+                pointBackgroundColor: '#007bff'
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false
+                    }
+                }]
+            },
+            legend: {
+                display: false,
+            }
+        }
+    });
+</script>
+
+</body>
+</body>
+</html>
