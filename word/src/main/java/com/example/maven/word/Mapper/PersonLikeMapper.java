@@ -2,6 +2,7 @@ package com.example.maven.word.Mapper;
 
 import com.example.maven.word.Entities.Person.Person;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
@@ -47,4 +48,9 @@ public interface PersonLikeMapper {
     @Select("select * from personinformation where depname=#{depname}")
     public Collection<Person> getRow1(String depname);
 
+    @Select("select techer from personinformation join classtoteachermapper on personinformation.classes=classtoteachermapper.classes where name=#{name}")
+    public String getMore1(String name);
+
+    @Select("select tphone from personinformation join classtoteachermapper on personinformation.classes=classtoteachermapper.classes where name=#{name}")
+    public String getMore2(String name);
 }

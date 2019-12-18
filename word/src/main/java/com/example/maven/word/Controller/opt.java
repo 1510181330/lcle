@@ -90,6 +90,19 @@ public class opt {
     }
 
     @ResponseBody
+    @RequestMapping("users_more")
+    public Map<String, Object> getMoreInfo(int id)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        Person p1 = personService.getPersonById(id);
+        String name = personService.getMore1(p1.getName());
+        String phone = personService.getMore2(p1.getName());
+        result.put("name", name);
+        result.put("phone", phone);
+        return result;
+    }
+
+    @ResponseBody
     @RequestMapping("getNumberDownListdate")
     public Map<String, Object> getNumberDownListdate(String param)
     {

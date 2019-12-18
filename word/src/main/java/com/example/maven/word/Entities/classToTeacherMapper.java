@@ -10,8 +10,9 @@ public class classToTeacherMapper {
     private Integer sum;
     private String classes;
     private String techer;
+    private String tphone;
 
-    public classToTeacherMapper(int id, Integer gradle, Integer weeknumber, Integer totlenumber, Integer sum, String classes, String techer) {
+    public classToTeacherMapper(int id, Integer gradle, Integer weeknumber, Integer totlenumber, Integer sum, String classes, String techer, String tphone) {
         this.id = id;
         this.gradle = gradle;
         this.weeknumber = weeknumber;
@@ -19,6 +20,7 @@ public class classToTeacherMapper {
         this.sum = sum;
         this.classes = classes;
         this.techer = techer;
+        this.tphone = tphone;
     }
 
     public int getId() {
@@ -77,6 +79,14 @@ public class classToTeacherMapper {
         this.techer = techer;
     }
 
+    public String getTphone() {
+        return tphone;
+    }
+
+    public void setTphone(String tphone) {
+        this.tphone = tphone;
+    }
+
     public classToTeacherMapper() {
         super();
     }
@@ -91,6 +101,7 @@ public class classToTeacherMapper {
                 ", sum=" + sum +
                 ", classes='" + classes + '\'' +
                 ", techer='" + techer + '\'' +
+                ", tphone='" + tphone + '\'' +
                 '}';
     }
 }

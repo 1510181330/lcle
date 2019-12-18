@@ -10,8 +10,9 @@ public class Person {
     private String phone;
     private String depname;
     private Integer priority;
+    private String classes;
 
-    public Person(int id, String name, String password, Integer sex, String QQ, String phone, String depname, Integer priority) {
+    public Person(int id, String name, String password, Integer sex, String QQ, String phone, String depname, Integer priority, String classes) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -20,6 +21,7 @@ public class Person {
         this.phone = phone;
         this.depname = depname;
         this.priority = priority;
+        this.classes = classes;
     }
 
     public int getId() {
@@ -86,6 +88,14 @@ public class Person {
         this.priority = priority;
     }
 
+    public String getClasses() {
+        return classes;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
+    }
+
     public Person() {
         super();
     }
@@ -101,6 +111,7 @@ public class Person {
                 ", phone='" + phone + '\'' +
                 ", depname='" + depname + '\'' +
                 ", priority=" + priority +
+                ", classes='" + classes + '\'' +
                 '}';
     }
 }

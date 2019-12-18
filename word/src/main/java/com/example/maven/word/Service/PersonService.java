@@ -75,5 +75,14 @@ public class PersonService {
         return personDao.getRow1(depname);
     }
 
+    public String getMore1(String name)
+    {
+        return personDao.getMore1(name);
+    }
+
+    public String getMore2(String name)
+    {
+        return personDao.getMore2(name);
+    }
 
 }

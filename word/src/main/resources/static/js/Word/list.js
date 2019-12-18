@@ -270,6 +270,22 @@ $(document).ready(function(){
         $('#error8').hide();
     }
 
+    $(document).on("click","#morebtn",function(){
+        var id = $(this).parent().siblings().first().text();
+        $.ajax({
+            type: "POST",
+            url: "/users_more",
+            data: {"id": id},
+            async : true,
+            success:function(data){
+                alert("辅导员："+data.name+"\n"+"联系方式："+data.phone);
+            },
+            error:function(){
+                alert("请求失败，系统内部问题");
+            }
+        })
+    });
+
     $(document).on("click","#delbtn",function(){
         var id = $(this).parent().siblings().first().text();
         $.ajax({
@@ -342,7 +358,8 @@ $(document).ready(function(){
             var depname = data.row1[i].depname;
             Row1 = Row1 + "<td>" + depname + "</td>";
             Row1 = Row1 + "<td><button id=\"updatebtn\" type=\"button\" class=\"btn btn-sm btn-success\" data-toggle=\"modal\" data-target=\"#updatemodal\">更新信息</button></td>\n" +
-                "<td><button id=\"delbtn\" type=\"button\" class=\"btn btn-sm btn-warning\">删除信息</button></td>";
+                "<td><button id=\"delbtn\" type=\"button\" class=\"btn btn-sm btn-warning\">删除信息</button></td>" +
+            "<td><button id=\"morebtn\" type=\"button\" class=\"btn btn-sm btn-info\">更多信息</button></td>";
             Row1 = Row1 + "</tr>";
             $('#row1').after(Row1);
         }
@@ -361,7 +378,8 @@ $(document).ready(function(){
             var depname = data.row2[i].depname;
             Row1 = Row1 + "<td>" + depname + "</td>";
             Row1 = Row1 + "<td><button id=\"updatebtn\" type=\"button\" class=\"btn btn-sm btn-success\" data-toggle=\"modal\" data-target=\"#updatemodal\">更新信息</button></td>\n" +
-                "<td><button id=\"delbtn\" type=\"button\" class=\"btn btn-sm btn-warning\">删除信息</button></td>";
+                "<td><button id=\"delbtn\" type=\"button\" class=\"btn btn-sm btn-warning\">删除信息</button></td>"+
+                "<td><button id=\"morebtn\" type=\"button\" class=\"btn btn-sm btn-info\">更多信息</button></td>";
             Row1 = Row1 + "</tr>";
             $('#row2').after(Row1);
         }
@@ -380,7 +398,8 @@ $(document).ready(function(){
             var depname = data.row3[i].depname;
             Row1 = Row1 + "<td>" + depname + "</td>";
             Row1 = Row1 + "<td><button id=\"updatebtn\" type=\"button\" class=\"btn btn-sm btn-success\" data-toggle=\"modal\" data-target=\"#updatemodal\">更新信息</button></td>\n" +
-                "<td><button id=\"delbtn\" type=\"button\" class=\"btn btn-sm btn-warning\">删除信息</button></td>";
+                "<td><button id=\"delbtn\" type=\"button\" class=\"btn btn-sm btn-warning\">删除信息</button></td>"+
+                "<td><button id=\"morebtn\" type=\"button\" class=\"btn btn-sm btn-info\">更多信息</button></td>";
             Row1 = Row1 + "</tr>";
             $('#row3').after(Row1);
         }
@@ -399,7 +418,8 @@ $(document).ready(function(){
             var depname = data.row4[i].depname;
             Row1 = Row1 + "<td>" + depname + "</td>";
             Row1 = Row1 + "<td><button id=\"updatebtn\" type=\"button\" class=\"btn btn-sm btn-success\" data-toggle=\"modal\" data-target=\"#updatemodal\">更新信息</button></td>\n" +
-                "<td><button id=\"delbtn\" type=\"button\" class=\"btn btn-sm btn-warning\">删除信息</button></td>";
+                "<td><button id=\"delbtn\" type=\"button\" class=\"btn btn-sm btn-warning\">删除信息</button></td>"+
+                "<td><button id=\"morebtn\" type=\"button\" class=\"btn btn-sm btn-info\">更多信息</button></td>";
             Row1 = Row1 + "</tr>";
             $('#row4').after(Row1);
         }
@@ -418,7 +438,8 @@ $(document).ready(function(){
             var depname = data.row5[i].depname;
             Row1 = Row1 + "<td>" + depname + "</td>";
             Row1 = Row1 + "<td><button id=\"updatebtn\" type=\"button\" class=\"btn btn-sm btn-success\" data-toggle=\"modal\" data-target=\"#updatemodal\">更新信息</button></td>\n" +
-                "<td><button id=\"delbtn\" type=\"button\" class=\"btn btn-sm btn-warning\">删除信息</button></td>";
+                "<td><button id=\"delbtn\" type=\"button\" class=\"btn btn-sm btn-warning\">删除信息</button></td>"+
+                "<td><button id=\"morebtn\" type=\"button\" class=\"btn btn-sm btn-info\">更多信息</button></td>";
             Row1 = Row1 + "</tr>";
             $('#row5').after(Row1);
         }
